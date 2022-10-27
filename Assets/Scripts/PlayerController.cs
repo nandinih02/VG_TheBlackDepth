@@ -4,65 +4,76 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
-    public Camera cam;
-    public GameObject bullet, BulletSpawn;
-    public float fireRate = 0.25f;
-    public float bulletSpeed = 10f;
-    private float horiz, vert;
 
+    float speed;
+    [Header("Movement")]
+    public float rotspeed = 8f; //Rotation Speed
+    public float playerCraftSpeed;
+
+    [Header("Combat")]
+    public float attackDelay=0.1f;
+    float timeSinceLastAttack = 0;
+
+    [Header("Prefabs")]
+    public Transform frontShotPrefab;
+
+    AudioSource audioData;
     private float timer;
+    SpriteRenderer sprite;
 
-    Vector2 mousePos;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Start()
     {
-
+        audioData = GetComponent<AudioSource>();
+        sprite = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-
-        // Player movement.
-        horiz = Input.GetAxis("Horizontal");
-        vert = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(horiz * speed, vert * speed, 0);
-        movement *= Time.deltaTime;
-        transform.Translate(movement);
-
-        //Check mouse position on the screen
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-
-        // Check if Fire1 button is pressed
-
-        if (Input.GetAxis("Fire1") > 0 && timer > fireRate)
-        {
-            // What is I instantiate? Where? What is its rotation?
-            GameObject bulletObj;
-            bulletObj = GameObject.Instantiate(bullet, BulletSpawn.transform.position, BulletSpawn.transform.rotation);
-
-            Rigidbody2D bulletRB = bulletObj.GetComponent<Rigidbody2D>();
-            bulletRB.AddForce(BulletSpawn.transform.right * bulletSpeed, ForceMode2D.Impulse);
-
-            // reset timer
-            timer = 0;
-        }
-
-        timer += Time.deltaTime;
-
-
-        // Player rotation following mouse
-
-        Vector2 lookDirection = mousePos - GetComponent<Rigidbody2D>().position;
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        GetComponent<Rigidbody2D>().rotation = angle;
-        lookDirection.Normalize();
-
+        Movement();
+        Attack();
     }
+
+    void Movement()
+    {
+        //Border Control
+        //transform.position = new Vector3(Mathf.Clamp(transform.position.x, -7.3f, 7.3f),
+        //Mathf.Clamp(transform.position.y, -3.5f, 3.5f), transform.position.z);
+        //Rotation
+        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotspeed * Time.deltaTime);
+
+        speed = (Input.GetKey("left shift") || Input.GetKey("right shift")) ? 1 : playerCraftSpeed;
+        //Input
+        float horispeed = Input.GetAxisRaw("Horizontal");
+        float vertispeed = Input.GetAxisRaw("Vertical");
+
+        //Movement
+        GetComponent<Rigidbody2D>().velocity = (Vector2.right * horispeed * speed) + (Vector2.up * vertispeed * speed);
+    }
+
+    void Attack()
+    {
+        // Check if player is asking to attack and time between attacks is great enough. if not adds time to timeSinceLastAttack
+        if (timeSinceLastAttack >= attackDelay && Input.GetMouseButton(0))
+        {
+            Transform bullet;
+            bullet = Instantiate(frontShotPrefab, transform.position, transform.rotation) as Transform;
+            bullet.GetComponent<Rigidbody2D>().velocity = (transform.right + (transform.up / 32)) * 18;
+            bullet = Instantiate(frontShotPrefab, transform.position, transform.rotation) as Transform;
+            bullet.GetComponent<Rigidbody2D>().velocity = (transform.right + (transform.up / -32)) * 18;
+            timeSinceLastAttack = 0;
+        }
+        else timeSinceLastAttack += Time.deltaTime;
+    }
+
+
 
 
 }
