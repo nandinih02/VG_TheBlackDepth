@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MainMenuControl : MonoBehaviour
 {
+    public GameObject settingsMenu;
+    public AudioMixer mainMixer;
     // Start is called before the first frame update
     void Start()
     {
+        settingsMenu.SetActive(false);
         
     }
 
@@ -36,6 +41,17 @@ public class MainMenuControl : MonoBehaviour
 
     public void settingsFunction()
     {
-        //opens settings menu
+        settingsMenu.SetActive(true);
+    }
+
+    //Settings Menu Functions
+    public void backButtonFunction()
+    {
+        settingsMenu.SetActive(false);
+    }
+
+    public void volumeSliderFunction(float volume)
+    {
+        mainMixer.SetFloat("Volume", volume);
     }
 }
