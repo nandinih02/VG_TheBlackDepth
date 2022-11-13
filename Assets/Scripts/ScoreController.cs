@@ -1,26 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
     [Header("Dynamic")]
     public int score = 0;
-
-    public TextMeshProUGUI uiText;
-
+    public Text uiText;
     // Start is called before the first frame update
     void Start()
     {
 
-        uiText = FindObjectOfType<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        uiText.text = "Score:" + score.ToString();
+        uiText.text = $"Score: {score}";
     }
 
     void OnTriggerEnter2D(Collider2D coll)

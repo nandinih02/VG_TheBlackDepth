@@ -8,7 +8,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float delay = 0.3f;
-         
+    public GameObject scoreGO;
+    public ScoreController scoreController;
+
+
     private Rigidbody2D rbody2D;
     private Animator animator;
 
@@ -17,6 +20,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         rbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        scoreGO = GameObject.Find("ScoreController");
+        scoreController = scoreGO.GetComponent<ScoreController>();
     }
 
     // Update is called once per frame
@@ -52,7 +57,8 @@ public class EnemyBehaviour : MonoBehaviour
         {
             animator.SetBool("hitByBullet", true);
             Destroy(this.gameObject,delay);
-            
+            scoreController.score += 10;
+
         }
     }
 }
