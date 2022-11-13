@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [Header("Prefabs")]
     public Transform frontShotPrefab;
 
+    [Header("Bullet spawn transform")] public Transform bulletTransform;
+
     AudioSource audioData;
     private float timer;
     SpriteRenderer sprite;
@@ -64,9 +66,9 @@ public class PlayerController : MonoBehaviour
         if (timeSinceLastAttack >= attackDelay && Input.GetMouseButton(0))
         {
             Transform bullet;
-            bullet = Instantiate(frontShotPrefab, transform.position, transform.rotation) as Transform;
+            bullet = Instantiate(frontShotPrefab, bulletTransform.position, transform.rotation) as Transform;
             bullet.GetComponent<Rigidbody2D>().velocity = (transform.right + (transform.up / 32)) * 18;
-            bullet = Instantiate(frontShotPrefab, transform.position, transform.rotation) as Transform;
+            bullet = Instantiate(frontShotPrefab, bulletTransform.position, transform.rotation) as Transform;
             bullet.GetComponent<Rigidbody2D>().velocity = (transform.right + (transform.up / -32)) * 18;
             timeSinceLastAttack = 0;
         }
