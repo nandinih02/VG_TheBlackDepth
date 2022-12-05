@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
         rbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         scoreGO = GameObject.Find("ScoreController");
-        scoreController = scoreGO.GetComponent<ScoreController>();
+      //  scoreController = scoreGO.GetComponent<ScoreController>();
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             animator.SetBool("hitByBullet", true);
             Destroy(this.gameObject,delay);
-            scoreController.score += 10;
+            LivesStatic.score += 10;
 
         }
     }

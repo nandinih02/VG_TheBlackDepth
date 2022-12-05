@@ -11,12 +11,26 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        score = LivesStatic.score;
     }
-
+ /*
     // Update is called once per frame
     void Update()
     {
+        uiText.text = $"Score: {score}";
+    }
+
+*/
+   
+    void Update()
+    {
+        UpdateScore();
+    }
+    
+
+    private void UpdateScore()
+    {
+        score = LivesStatic.score;
         uiText.text = $"Score: {score}";
     }
 
