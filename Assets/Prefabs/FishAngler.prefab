@@ -27,7 +27,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7420721, y: 0.49340057, z: -0.31419507}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3180619494386876983}
   m_RootOrder: 0
@@ -211,7 +210,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.162072, y: -55.6466, z: -0.31419507}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3180619494812532970}
   - {fileID: 3180619494386876983}
@@ -250,7 +248,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.8720722, y: -5.3334007, z: 0.31419507}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4819313077526198667}
   m_Father: {fileID: 3180619494041369793}
@@ -310,7 +307,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &3180619494386877003
 Animator:
-  serializedVersion: 4
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -323,7 +320,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -403,10 +399,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f2cf1d39b592f49932494ce40a9d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.72
+  moveSpeed: 3
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 1
+  detectionRange: 20
 --- !u!1 &3180619494812532971
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +432,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3180619494041369793}
   m_RootOrder: 0

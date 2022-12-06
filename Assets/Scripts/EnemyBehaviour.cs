@@ -10,6 +10,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float delay = 0.3f;
     public GameObject scoreGO;
     public ScoreController scoreController;
+    public bool chasePlayer=false;
+    public float detectionRange=20f;
+    GameObject player;
 
 
     private Rigidbody2D rbody2D;
@@ -21,23 +24,31 @@ public class EnemyBehaviour : MonoBehaviour
         rbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         scoreGO = GameObject.Find("ScoreController");
+        player = GameObject.Find("Player");
       //  scoreController = scoreGO.GetComponent<ScoreController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsFacingRight())
+        if (Vector3.Distance(transform.position, player.transform.position) < detectionRange && chasePlayer==true)
         {
-            //move right
-            rbody2D.velocity = new Vector2(moveSpeed, 0f);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * (moveSpeed*2f));
         }
         else
         {
-            rbody2D.velocity = new Vector2(-moveSpeed, 0f);
-            //move right
+            if (IsFacingRight())
+            {
+                //move right
+                rbody2D.velocity = new Vector2(moveSpeed, 0f);
+            }
+            else
+            {
+                rbody2D.velocity = new Vector2(-moveSpeed, 0f);
+                //move right
+            }
         }
-        
+        //transform.localScale = new Vector3(Mathf.Abs(rbody2D.velocity.x),transform.localScale.y,transform.localScale.z);
     }
 
     private bool IsFacingRight()
@@ -47,7 +58,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D coll)
     {
-        //flip sprite
+      //flip sprite
         transform.localScale = new Vector2(-(Mathf.Sign(rbody2D.velocity.x)), transform.localScale.y);
     }
 
