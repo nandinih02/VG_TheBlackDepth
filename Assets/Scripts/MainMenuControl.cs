@@ -24,7 +24,9 @@ public class MainMenuControl : MonoBehaviour
 
     public void startFunction()
     {
-        SceneManager.LoadScene("Level1");
+        LivesStatic.playerLives = 3;
+    LivesStatic.score = 0;
+    SceneManager.LoadScene("Level1");
     }
 
     public void volumeFunction(bool muted)
