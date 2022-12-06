@@ -59,6 +59,6 @@ public class PlayerLivesTracker : MonoBehaviour
     private void HandleGameOver()
     {
         //load game over scene
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene(4);
     }
 }

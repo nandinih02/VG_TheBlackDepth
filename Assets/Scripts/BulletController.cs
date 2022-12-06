@@ -19,5 +19,14 @@ public class BulletController : MonoBehaviour
             if (timeElapsed > delayUntilDestroy) Destroy(this.gameObject);
     }
 
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Ground")
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
    
 }

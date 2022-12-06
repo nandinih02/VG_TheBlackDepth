@@ -1089,6 +1089,8 @@ MonoBehaviour:
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!70 &587408569
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1277,6 +1279,8 @@ MonoBehaviour:
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!95 &610989406
 Animator:
   serializedVersion: 4
@@ -1569,6 +1573,8 @@ MonoBehaviour:
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!70 &655961968
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1773,6 +1779,8 @@ MonoBehaviour:
   delay: 0.4
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!61 &670790083
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2654,7 +2662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157755812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1407566, y: -0.20813012, z: -10}
+  m_LocalPosition: {x: 0.14214021, y: -0.20813012, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3217,6 +3225,8 @@ MonoBehaviour:
   delay: 0.4
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!61 &1384217874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3543,6 +3553,8 @@ MonoBehaviour:
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!95 &1514504627
 Animator:
   serializedVersion: 4
@@ -3754,7 +3766,6 @@ GameObject:
   - component: {fileID: 1541967989}
   - component: {fileID: 1541967988}
   - component: {fileID: 1541967987}
-  - component: {fileID: 1541967990}
   m_Layer: 0
   m_Name: GroundTilemap
   m_TagString: Ground
@@ -65657,18 +65668,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!114 &1541967990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541967983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a438d55c81072b43922b48f10387d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1548686877
 GameObject:
   m_ObjectHideFlags: 0
@@ -65885,6 +65884,8 @@ MonoBehaviour:
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!70 &1738209864
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -66240,6 +66241,8 @@ MonoBehaviour:
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!95 &1806124900
 Animator:
   serializedVersion: 4
@@ -66807,6 +66810,8 @@ MonoBehaviour:
   delay: 0.3
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!70 &2060753084
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -67011,6 +67016,8 @@ MonoBehaviour:
   delay: 0.4
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
+  chasePlayer: 0
+  detectionRange: 20
 --- !u!61 &2111497571
 BoxCollider2D:
   m_ObjectHideFlags: 0

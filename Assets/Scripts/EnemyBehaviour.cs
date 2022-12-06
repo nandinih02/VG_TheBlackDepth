@@ -31,12 +31,12 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < detectionRange && chasePlayer==true)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * (moveSpeed*2f));
-        }
-        else
-        {
+        //if (Vector3.Distance(transform.position, player.transform.position) < detectionRange && chasePlayer==true)
+       // {
+          //  transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * (moveSpeed*2f));
+        //}
+        //else
+       // {
             if (IsFacingRight())
             {
                 //move right
@@ -47,7 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
                 rbody2D.velocity = new Vector2(-moveSpeed, 0f);
                 //move right
             }
-        }
+       // }
         //transform.localScale = new Vector3(Mathf.Abs(rbody2D.velocity.x),transform.localScale.y,transform.localScale.z);
     }
 
