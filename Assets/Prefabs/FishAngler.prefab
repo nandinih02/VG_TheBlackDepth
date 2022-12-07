@@ -408,7 +408,7 @@ MonoBehaviour:
   scoreGO: {fileID: 0}
   scoreController: {fileID: 0}
   chasePlayer: 1
-  detectionRange: 20
+  detectionRange: 15
 --- !u!1 &3180619494812532971
 GameObject:
   m_ObjectHideFlags: 0

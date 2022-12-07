@@ -56,4 +56,9 @@ public class MainMenuControl : MonoBehaviour
     {
         mainMixer.SetFloat("Volume", volume);
     }
+
+    public void quitFunction()
+    {
+        Application.Quit();
+    }
 }
