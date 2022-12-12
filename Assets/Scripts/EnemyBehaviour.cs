@@ -7,8 +7,9 @@ public class EnemyBehaviour : MonoBehaviour
 {
 
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float delay = 0.3f;
+    [SerializeField] private float delay = 0.1f;
     public GameObject scoreGO;
+    private GameObject sound;
     public ScoreController scoreController;
     public bool chasePlayer=false;
     public float detectionRange=20f;
@@ -17,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Rigidbody2D rbody2D;
     private Animator animator;
+    private AudioSource myAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,11 @@ public class EnemyBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         scoreGO = GameObject.Find("ScoreController");
         player = GameObject.Find("Player");
-      //  scoreController = scoreGO.GetComponent<ScoreController>();
+        sound = GameObject.FindGameObjectWithTag("Explosion");
+        
+        
+
+        //  scoreController = scoreGO.GetComponent<ScoreController>();
     }
 
     // Update is called once per frame
@@ -65,10 +71,14 @@ public class EnemyBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Bullet")
-        {
+        {   
+            myAudioSource = sound.GetComponent<AudioSource>();
+            myAudioSource.Play();
             animator.SetBool("hitByBullet", true);
+            moveSpeed = 0;
             Destroy(this.gameObject,delay);
             LivesStatic.score += 10;
+            
 
         }
     }

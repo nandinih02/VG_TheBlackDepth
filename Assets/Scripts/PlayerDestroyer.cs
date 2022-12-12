@@ -46,8 +46,8 @@ public class PlayerDestroyer : MonoBehaviour
         
         Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
-        Destroy(this.gameObject);
-            yield return new WaitForSeconds(1);
+                Destroy(this.gameObject);
+        yield return new WaitForSeconds(1);    
          
     }
 
