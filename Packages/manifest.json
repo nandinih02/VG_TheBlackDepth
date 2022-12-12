@@ -12,11 +12,15 @@
     "com.unity.ide.visualstudio": "2.0.12",
     "com.unity.ide.vscode": "1.2.4",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "com.unity.render-pipelines.universal": "11.0.0",
 =======
     "com.unity.netcode.gameobjects": "1.1.0",
     "com.unity.render-pipelines.universal": "12.1.2",
 >>>>>>> 3f534ee0d9f10d18e29addcba575523a5bc79c4f
+=======
+    "com.unity.render-pipelines.universal": "12.1.2",
+>>>>>>> parent of 03a5017 (quick change to packages)
     "com.unity.test-framework": "1.1.29",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.3",
